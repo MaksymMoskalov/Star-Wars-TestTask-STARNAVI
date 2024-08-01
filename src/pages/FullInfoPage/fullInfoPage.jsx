@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Background, ReactFlow } from '@xyflow/react';
+import { ReactFlow } from '@xyflow/react';
 import { selectElements } from '../../redux/Heroes/heroes.selectors';
 
 import '@xyflow/react/dist/style.css';
