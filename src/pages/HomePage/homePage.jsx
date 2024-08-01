@@ -1,11 +1,22 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { selectHeroes } from '/';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectHeroes } from '../../redux/Heroes/heroes.selectors';
+import { allHeroesThunk } from '../../redux/Heroes/heroesOperations';
+import HeroesList from 'components/HeroesList/HeroesList';
 
 const HomePage = () => {
   const heroes = useSelector(selectHeroes);
-  console.log(heroes);
-  return <div>homePage</div>;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(allHeroesThunk());
+  }, [dispatch]);
+
+  return (
+    <section>
+      <HeroesList heroes={heroes} />
+    </section>
+  );
 };
 
 export default HomePage;

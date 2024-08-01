@@ -4,8 +4,8 @@ import { Blocks } from 'react-loader-spinner';
 import Header from './Header/Header';
 import { useDispatch } from 'react-redux';
 
-const FullInfoPage = lazy(() => import('pages/FullInfoPage/fullInfoPage'));
-const HomePage = lazy(() => import('pages/HomePage/homePage'));
+const FullInfoPage = lazy(() => import('../pages/FullInfoPage/fullInfoPage'));
+const HomePage = lazy(() => import('../pages/HomePage/homePage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ export const App = () => {
   useEffect(() => {}, [dispatch]);
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <Suspense
         fallback={
           <Blocks
