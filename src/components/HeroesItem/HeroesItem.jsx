@@ -19,8 +19,8 @@ const MovieItem = ({ hero }) => {
             src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
             alt={'sadawd'}
           />
-          <h3>{name}</h3>
         </div>
+        <h3>{name}</h3>
       </Link>
     </StyledItem>
   );

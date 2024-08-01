@@ -9,6 +9,8 @@ import {
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 const INITIAL_STATE = {
+  pageCount: 0,
+  currentPage: 0,
   heroes: [],
   heroInfo: {
     character: {},
@@ -33,12 +35,20 @@ const swHeroesSlice = createSlice({
         state.heroInfo.starShips
       );
     },
+    setPosts(state, action) {
+      state.posts = action.payload.posts;
+      state.pageCount = action.payload.pageCount;
+    },
+    setCurrentPage(state, action) {
+      state.currentPage = action.payload;
+    },
   },
   extraReducers: builder =>
     builder
       .addCase(allHeroesThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.heroes = action.payload.results;
+        state.pageCount = Math.ceil(action.payload.count / 10);
       })
       .addCase(exectHeroThunk.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -80,5 +90,6 @@ const swHeroesSlice = createSlice({
       ),
 });
 
-export const { handleElements } = swHeroesSlice.actions;
+export const { handleElements, setCurrentPage, setPosts } =
+  swHeroesSlice.actions;
 export const swHeroesReducer = swHeroesSlice.reducer;

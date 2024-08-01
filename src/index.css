@@ -1,4 +1,7 @@
-@import-normalize; /* bring in normalize.css styles */
+@font-face {
+  font-family: 'Star Jedi';
+  src: url('https://fonts.cdnfonts.com/s/9116/Starjedi.ttf') format('truetype');
+}
 
 h1,
 h2,
