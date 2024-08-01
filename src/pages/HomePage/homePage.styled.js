@@ -3,11 +3,13 @@ import styled from 'styled-components';
 
 export const HomeSection = styled.section`
   font-family: 'Star Jedi', sans-serif;
+  padding-top: 40px;
+  padding-bottom: 40px;
   padding-left: 100px;
   padding-right: 100px;
 
   color: #ffcc00;
-  background-color: #000000;
+  background-color: #0d1117;
 `;
 
 export const StyledReactPaginate = styled(ReactPaginate)`

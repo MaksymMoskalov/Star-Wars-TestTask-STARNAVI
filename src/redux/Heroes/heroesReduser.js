@@ -26,7 +26,8 @@ const swHeroesSlice = createSlice({
   initialState: INITIAL_STATE,
   reducers: {
     handleReset(state, _) {
-      state = INITIAL_STATE;
+      state.heroInfo = INITIAL_STATE.heroInfo;
+      state.elements = INITIAL_STATE.elements;
     },
     handleElements(state, _) {
       state.elements = generateElements(
@@ -90,6 +91,6 @@ const swHeroesSlice = createSlice({
       ),
 });
 
-export const { handleElements, setCurrentPage, setPosts } =
+export const { handleElements, setCurrentPage, setPosts, handleReset } =
   swHeroesSlice.actions;
 export const swHeroesReducer = swHeroesSlice.reducer;

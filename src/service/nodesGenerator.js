@@ -3,9 +3,12 @@ export const generateElements = (character, films, starships) => {
   const nodes = [
     {
       id: `character-${character.id}`,
-      type: 'input',
-      data: { label: character.name },
-      position: { x: 250, y: 0 },
+      type: 'customNode',
+      data: {
+        label: character.name,
+        image: `https://starwars-visualguide.com/assets/img/characters/${character.id}.jpg`,
+      },
+      position: { x: 400, y: 0 },
     },
   ];
 
@@ -16,14 +19,19 @@ export const generateElements = (character, films, starships) => {
     const filmNodeId = `film-${film.id}`;
     nodes.push({
       id: filmNodeId,
-      data: { label: film.title },
-      position: { x: 100 + index * 200, y: 150 },
+      type: 'customNode',
+      data: {
+        label: film.title,
+        image: `https://starwars-visualguide.com/assets/img/films/${film.id}.jpg`,
+      },
+      position: { x: 100 + index * 200, y: 250 },
     });
     edges.push({
       id: `edge-${character.id}-${film.id}`,
       source: `character-${character.id}`,
       target: filmNodeId,
       animated: true,
+      style: { stroke: 'yellow' },
     });
 
     film.starships.forEach((starshipId, sIndex) => {
@@ -32,14 +40,19 @@ export const generateElements = (character, films, starships) => {
         const starshipNodeId = `starship-${starship.id}`;
         nodes.push({
           id: starshipNodeId,
-          data: { label: starship.name },
-          position: { x: 50 + sIndex * 150, y: 300 },
+          type: 'customNode',
+          data: {
+            label: starship.name,
+            image: `https://starwars-visualguide.com/assets/img/starships/${starship.id}.jpg`,
+          },
+          position: { x: 50 + sIndex * 150, y: 550 },
         });
         edges.push({
           id: `edge-${film.id}-${starship.id}`,
           source: filmNodeId,
           target: starshipNodeId,
           animated: true,
+          style: { stroke: 'yellow' },
         });
       }
     });

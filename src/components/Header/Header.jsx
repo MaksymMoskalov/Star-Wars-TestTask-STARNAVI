@@ -10,7 +10,11 @@ import {
 } from './Header.styled';
 
 const Header = () => {
-  return <div></div>;
+  return (
+    <StyledHeared>
+      <Logo to={`/`}>StarWars</Logo>
+    </StyledHeared>
+  );
 };
 
 export default Header;

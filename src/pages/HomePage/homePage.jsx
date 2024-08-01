@@ -8,7 +8,7 @@ import {
 import { allHeroesThunk } from '../../redux/Heroes/heroesOperations';
 import HeroesList from 'components/HeroesList/HeroesList';
 import { HomeSection, StyledReactPaginate } from './homePage.styled';
-import { setCurrentPage } from '../../redux/Heroes/heroesReduser';
+import { handleReset, setCurrentPage } from '../../redux/Heroes/heroesReduser';
 
 const HomePage = () => {
   const heroes = useSelector(selectHeroes);
@@ -18,6 +18,7 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(allHeroesThunk(currentPage + 1));
+    dispatch(handleReset());
   }, [dispatch, currentPage]);
 
   const handlePageClick = data => {

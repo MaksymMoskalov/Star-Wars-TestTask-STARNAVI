@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { StyledItem, StyledItemPoster } from './MovieItem.styled';
+import { Cover, StyledItem, StyledItemPoster, Title } from './MovieItem.styled';
 
 const MovieItem = ({ hero }) => {
   const location = useLocation();
@@ -14,13 +14,13 @@ const MovieItem = ({ hero }) => {
         to={`/hero/${id}`}
         className="movie-title"
       >
-        <div className="cover">
+        <Cover>
           <StyledItemPoster
             src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
             alt={'sadawd'}
           />
-        </div>
-        <h3>{name}</h3>
+        </Cover>
+        <Title>{name}</Title>
       </Link>
     </StyledItem>
   );

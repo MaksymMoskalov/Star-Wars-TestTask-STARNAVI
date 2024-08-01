@@ -10,9 +10,6 @@ export const StyledHeared = styled.header`
 
   background-color: #0d1117;
 
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-
   .header-link {
     padding: 20px;
     text-decoration: none;
@@ -46,9 +43,11 @@ export const StyledHeared = styled.header`
 `;
 
 export const Logo = styled(NavLink)`
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 500;
-  color: white;
+  color: yellow;
+  margin-left: auto;
+  margin-right: auto;
 `;
 export const Acsent = styled.span`
   color: yellow;

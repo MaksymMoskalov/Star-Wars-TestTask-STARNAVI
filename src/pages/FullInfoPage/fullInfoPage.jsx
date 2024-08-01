@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ReactFlow } from '@xyflow/react';
+import { Background, ReactFlow } from '@xyflow/react';
 import { selectElements } from '../../redux/Heroes/heroes.selectors';
 
 import '@xyflow/react/dist/style.css';
@@ -11,6 +11,15 @@ import {
   heroStarshipsThunk,
 } from '../../redux/Heroes/heroesOperations';
 import { handleElements } from '../../redux/Heroes/heroesReduser';
+import CustomNode from 'components/CustomNode/CustomNode';
+
+const nodeTypes = {
+  customNode: CustomNode,
+};
+
+const rfStyle = {
+  backgroundColor: '#0d1117',
+};
 
 const FullInfoPage = () => {
   const { heroId } = useParams();
@@ -31,8 +40,15 @@ const FullInfoPage = () => {
   }, [heroId, dispatch]);
 
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-      <ReactFlow nodes={nodes} edges={edges} />
+    <div style={{ width: '99vw', height: '90vh' }}>
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        nodeTypes={nodeTypes}
+        snapToGrid={true}
+        snapGrid={[16, 16]}
+        style={rfStyle}
+      />
     </div>
   );
 };
