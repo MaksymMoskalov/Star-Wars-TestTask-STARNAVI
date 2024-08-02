@@ -29,16 +29,16 @@ const swHeroesSlice = createSlice({
       state.heroInfo = INITIAL_STATE.heroInfo;
       state.elements = INITIAL_STATE.elements;
     },
+    handleResetHome(state, _) {
+      state.pageCount = INITIAL_STATE.heroInfo;
+      state.elements = INITIAL_STATE.elements;
+    },
     handleElements(state, _) {
       state.elements = generateElements(
         state.heroInfo.character,
         state.heroInfo.movies,
         state.heroInfo.starShips
       );
-    },
-    setPosts(state, action) {
-      state.posts = action.payload.posts;
-      state.pageCount = action.payload.pageCount;
     },
     setCurrentPage(state, action) {
       state.currentPage = action.payload;
@@ -54,17 +54,14 @@ const swHeroesSlice = createSlice({
       .addCase(exectHeroThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.heroInfo.character = action.payload;
-        console.log(action.payload);
       })
       .addCase(filmsWithHeroThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.heroInfo.movies = action.payload;
-        console.log(action.payload);
       })
       .addCase(heroStarshipsThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.heroInfo.starShips = action.payload;
-        console.log(action.payload);
       })
 
       .addMatcher(
@@ -91,6 +88,6 @@ const swHeroesSlice = createSlice({
       ),
 });
 
-export const { handleElements, setCurrentPage, setPosts, handleReset } =
+export const { handleElements, setCurrentPage, handleReset } =
   swHeroesSlice.actions;
 export const swHeroesReducer = swHeroesSlice.reducer;

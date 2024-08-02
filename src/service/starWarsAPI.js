@@ -4,7 +4,7 @@ export const instance = axios.create({
   baseURL: `https://sw-api.starnavi.io/`,
 });
 
-export const getAllHeroes = async (page = 1) => {
+export const getAllHeroes = async page => {
   const { data } = await instance.get(`people/?page=${page}`);
   return data;
 };

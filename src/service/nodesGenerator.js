@@ -1,4 +1,3 @@
-// utils.js
 export const generateElements = (character, films, starships) => {
   const nodes = [
     {
@@ -14,7 +13,7 @@ export const generateElements = (character, films, starships) => {
 
   const edges = [];
 
-  character.films.forEach((filmId, index) => {
+  character.films.forEach((filmId, filmindex) => {
     const film = films.find(f => f.id === filmId);
     const filmNodeId = `film-${film.id}`;
     nodes.push({
@@ -24,7 +23,7 @@ export const generateElements = (character, films, starships) => {
         label: film.title,
         image: `https://starwars-visualguide.com/assets/img/films/${film.id}.jpg`,
       },
-      position: { x: 100 + index * 200, y: 250 },
+      position: { x: 100 + filmindex * 200, y: 250 },
     });
     edges.push({
       id: `edge-${character.id}-${film.id}`,
@@ -34,7 +33,7 @@ export const generateElements = (character, films, starships) => {
       style: { stroke: 'yellow' },
     });
 
-    film.starships.forEach((starshipId, sIndex) => {
+    film.starships.forEach((starshipId, starshipIndex) => {
       if (character.starships.includes(starshipId)) {
         const starship = starships.find(s => s.id === starshipId);
         const starshipNodeId = `starship-${starship.id}`;
@@ -45,7 +44,7 @@ export const generateElements = (character, films, starships) => {
             label: starship.name,
             image: `https://starwars-visualguide.com/assets/img/starships/${starship.id}.jpg`,
           },
-          position: { x: 50 + sIndex * 150, y: 550 },
+          position: { x: 50 + starshipIndex * 150, y: 550 },
         });
         edges.push({
           id: `edge-${film.id}-${starship.id}`,
